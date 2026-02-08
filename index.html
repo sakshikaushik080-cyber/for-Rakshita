@@ -14,32 +14,35 @@ text-align:center;
 overflow:hidden;
 color:#7a003c;
 
-background:linear-gradient(45deg,#ffd6e8,#ffc0d9,#ff9ec7,#ff7ab5);
-background-size:400% 400%;
-animation:bg 12s ease infinite;
+background:radial-gradient(circle at top,#ffe3f1,#ffc7e0,#ff9ec7);
+animation:bgmove 12s ease infinite alternate;
 }
 
-@keyframes bg{
-0%{background-position:0% 50%}
-50%{background-position:100% 50%}
-100%{background-position:0% 50%}
+@keyframes bgmove{
+from{background-position:0% 0%}
+to{background-position:100% 100%}
 }
 
+/* card */
 .container{
 position:absolute;
 top:50%;
 left:50%;
 transform:translate(-50%,-50%);
-background:rgba(255,255,255,0.75);
-padding:40px;
-border-radius:25px;
-box-shadow:0 10px 40px rgba(0,0,0,0.2);
-animation:fade .7s ease;
+background:rgba(255,255,255,0.88);
+padding:45px;
+border-radius:28px;
+box-shadow:
+0 0 20px rgba(255,105,180,.25),
+0 10px 40px rgba(0,0,0,0.15);
+animation:pop .6s ease;
+max-width:420px;
+border:3px solid #ffd1e6;
 }
 
-@keyframes fade{
-from{opacity:0; transform:translate(-50%,-60%)}
-to{opacity:1; transform:translate(-50%,-50%)}
+@keyframes pop{
+from{opacity:0; transform:translate(-50%,-60%) scale(.8)}
+to{opacity:1; transform:translate(-50%,-50%) scale(1)}
 }
 
 button{
@@ -53,51 +56,84 @@ font-weight:bold;
 transition:.25s;
 }
 
-#yes{background:#ff4d88;color:white;}
-#yes:hover{transform:scale(1.15)}
+#yes{
+background:#ff4d88;
+color:white;
+box-shadow:0 5px 15px rgba(255,77,136,.5);
+}
+#yes:hover{transform:scale(1.15) rotate(-2deg)}
 
-#no{background:white;color:#ff4d88;position:absolute}
+#no{
+background:white;
+color:#ff4d88;
+position:absolute;
+border:2px solid #ff9ec7;
+}
 
 .hidden{display:none}
 
+/* floating stickers */
 .float{
 position:fixed;
 font-size:22px;
-animation:float 8s linear infinite;
+animation:float 10s linear infinite;
+opacity:.9;
 }
 
 @keyframes float{
-to{transform:translateY(-120vh) rotate(360deg)}
+0%{transform:translateY(0) rotate(0)}
+100%{transform:translateY(-120vh) rotate(360deg)}
 }
 </style>
 </head>
 
 <body>
 
+<!-- OPEN -->
 <div id="start" class="container">
 <h1>hi drama bean 🎀</h1>
-<h2>click this i need to say something</h2>
-<button onclick="openMessage()">open</button>
+<h2>important relationship business</h2>
+<button onclick="openMessage()">open notice</button>
 </div>
 
+<!-- QUESTION -->
 <div id="message" class="container hidden">
-<h1>
-i love you drama bean <br>
-we'll figure this out dw <br>
-you annoy me daily but i still choose you
-</h1>
+<h2>
+ok so technically we are already together <br>
+but this is the official renewal <br>
+till mba minimum contract
+</h2>
 
-<h2>be my valentine? 💗</h2>
+<h1>be my valentine again?</h1>
 
-<button id="yes" onclick="yesClicked()">yes</button>
+<button id="yes" onclick="yesClicked()">yes obviously</button>
 <button id="no" onmouseover="moveNo()">no</button>
 
 <p id="annoy"></p>
 </div>
 
+<!-- TRAP -->
+<div id="trap" class="container hidden">
+<h1>HAHAHA it was a trap 🎀</h1>
+
+<h2>
+you've successfully subscribed to:<br><br>
+• me <br>
+• my random rants <br>
+• my mood swings <br>
+• my overthinking <br>
+• reels at 3am
+</h2>
+
+<h3>valid till forever (or at least till mba)</h3>
+
+<button onclick="showFinal()">continue</button>
+</div>
+
+<!-- FINAL -->
 <div id="final" class="container hidden">
-<h1>good. correct decision.</h1>
-<h2>you are now stuck with me 😌</h2>
+<h1>ok but seriously ❤️</h1>
+<h2>happy propose day</h2>
 
 <video width="320" controls autoplay>
 <source src="video.mp4" type="video/mp4">
@@ -112,12 +148,14 @@ spawn();
 }
 
 let lines=[
-"tf how dare you",
-"click yes",
-"be serious",
 "wrong answer",
-"go back and fix it",
-"rakshita behave"
+"try again",
+"no option disabled",
+"be serious",
+"click the pink one",
+"rakshita behave",
+"this was not optional",
+"you thought you had freedom?"
 ];
 
 function moveNo(){
@@ -130,15 +168,20 @@ lines[Math.floor(Math.random()*lines.length)];
 
 function yesClicked(){
 document.getElementById("message").classList.add("hidden");
-document.getElementById("final").classList.remove("hidden");
+document.getElementById("trap").classList.remove("hidden");
 spawn();
+}
+
+function showFinal(){
+document.getElementById("trap").classList.add("hidden");
+document.getElementById("final").classList.remove("hidden");
 }
 
 function spawn(){
 setInterval(()=>{
 let e=document.createElement("div");
 e.className="float";
-let icons=["🎀","💗","🌸","✨","🫶","💞"];
+let icons=["🎀","💗","🌸","✨","🧸","🫶","💞","💘"];
 e.innerHTML=icons[Math.floor(Math.random()*icons.length)];
 e.style.left=Math.random()*100+"vw";
 document.body.appendChild(e);
@@ -146,6 +189,6 @@ setTimeout(()=>e.remove(),8000);
 },400);
 }
 </script>
-
+  
 </body>
 </html>
