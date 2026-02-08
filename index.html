@@ -3,78 +3,50 @@ index.html
 <html>
 <head>
 <title>For Rakshita ❤️</title>
+
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+
 body{
-    background:black;
+    margin:0;
+    height:100vh;
+    font-family:'Poppins',sans-serif;
     color:white;
-    font-family:Arial;
     text-align:center;
-    padding-top:100px;
+    overflow:hidden;
+    background:linear-gradient(-45deg,#ff4d88,#ff8fb1,#ffb3c6,#ffd6e0);
+    background-size:400% 400%;
+    animation:bg 10s ease infinite;
 }
+
+@keyframes bg{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+
+.container{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    animation:fade 1s ease;
+}
+
+@keyframes fade{
+from{opacity:0; transform:translate(-50%,-60%)}
+to{opacity:1; transform:translate(-50%,-50%)}
+}
+
 button{
-    padding:15px 25px;
-    font-size:18px;
-    margin:10px;
-    border:none;
-    border-radius:12px;
-    cursor:pointer;
-}
-#yes{background:#ff4d88;color:white;}
-#no{background:#444;color:white;position:absolute;}
-.hidden{display:none;}
-</style>
-</head>
-
-<body>
-
-<div id="start">
-<h1>Click here for a message 👀</h1>
-<button onclick="openMessage()">open</button>
-</div>
-
-<div id="message" class="hidden">
-<h1>
-i love you so much  
-you cute cool hottieee  
-you annoy me but also fix my mood  
-so basically…  
-</h1>
-
-<h2>Will you be my Valentine? ❤️</h2>
-
-<button id="yes" onclick="yesClicked()">YES</button>
-<button id="no" onmouseover="moveNo()">NO</button>
-</div>
-
-<div id="final" class="hidden">
-<h1>hehe i knew it 😌</h1>
-<h2>happy propose day my idiot ❤️</h2>
-
-<video width="320" controls autoplay>
-<source src="video.mp4" type="video/mp4">
-</video>
-
-<p>(video will work after we upload it)</p>
-</div>
-
-<script>
-function openMessage(){
-document.getElementById("start").classList.add("hidden");
-document.getElementById("message").classList.remove("hidden");
+padding:14px 28px;
+font-size:18px;
+border:none;
+border-radius:30px;
+margin:10px;
+cursor:pointer;
+transition:0.3s;
 }
 
-function moveNo(){
-let btn=document.getElementById("no");
-btn.style.top=Math.random()*80+"%";
-btn.style.left=Math.random()*80+"%";
-}
-
-function yesClicked(){
-document.getElementById("message").classList.add("hidden");
-document.getElementById("final").classList.remove("hidden");
-}
-</script>
-
-</body>
-</html>
+#yes{background:white;colo
 
