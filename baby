@@ -1,0 +1,80 @@
+index.html
+<!DOCTYPE html>
+<html>
+<head>
+<title>For Rakshita ❤️</title>
+<style>
+body{
+    background:black;
+    color:white;
+    font-family:Arial;
+    text-align:center;
+    padding-top:100px;
+}
+button{
+    padding:15px 25px;
+    font-size:18px;
+    margin:10px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+}
+#yes{background:#ff4d88;color:white;}
+#no{background:#444;color:white;position:absolute;}
+.hidden{display:none;}
+</style>
+</head>
+
+<body>
+
+<div id="start">
+<h1>Click here for a message 👀</h1>
+<button onclick="openMessage()">open</button>
+</div>
+
+<div id="message" class="hidden">
+<h1>
+i love you so much  
+you cute cool hottieee  
+you annoy me but also fix my mood  
+so basically…  
+</h1>
+
+<h2>Will you be my Valentine? ❤️</h2>
+
+<button id="yes" onclick="yesClicked()">YES</button>
+<button id="no" onmouseover="moveNo()">NO</button>
+</div>
+
+<div id="final" class="hidden">
+<h1>hehe i knew it 😌</h1>
+<h2>happy propose day my idiot ❤️</h2>
+
+<video width="320" controls autoplay>
+<source src="video.mp4" type="video/mp4">
+</video>
+
+<p>(video will work after we upload it)</p>
+</div>
+
+<script>
+function openMessage(){
+document.getElementById("start").classList.add("hidden");
+document.getElementById("message").classList.remove("hidden");
+}
+
+function moveNo(){
+let btn=document.getElementById("no");
+btn.style.top=Math.random()*80+"%";
+btn.style.left=Math.random()*80+"%";
+}
+
+function yesClicked(){
+document.getElementById("message").classList.add("hidden");
+document.getElementById("final").classList.remove("hidden");
+}
+</script>
+
+</body>
+</html>
+
